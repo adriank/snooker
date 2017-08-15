@@ -1,0 +1,111 @@
+{
+	"game":{
+		"current_player": null,
+		"current_ball": null
+	},
+	"players": [
+		{
+			"name": "Pawilon",
+			"score": 0,
+			"balls": [],
+			"fouls": 0,
+			"bg_color": "#E637BF",
+			"color": "#eeeeee"
+		},
+		{
+			"name": "Cyprian",
+			"score": 0,
+			"balls": [],
+			"fouls": 0,
+			"bg_color": "#162521",
+			"color": "#cccccc"
+		},
+		{
+			"name": "Ela",
+			"score": 0,
+			"balls": [],
+			"fouls": 0,
+			"bg_color": "#E7E247",
+			"color": "#111111"
+		},
+		{
+			"name": "Adrian",
+			"score": 0,
+			"balls": [],
+			"fouls": 0,
+			"bg_color": "#5158BB",
+			"color": "#eeeeee"
+		},
+		{
+			"name": "Adam",
+			"score": 0,
+			"balls": [],
+			"fouls": 0,
+			"bg_color": "#379392",
+			"color": "#eeeeee"
+		},
+		{
+	],
+	"remaining_balls": [{
+			"value": 1,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 2,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 3,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 4,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 5,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 6,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 7,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 8,
+			"color": "",
+			"suit": "solid"
+		},{
+			"value": 9,
+			"color": "",
+			"suit": "striped"
+		},{
+			"value": 10,
+			"color": "",
+			"suit": "striped"
+			},{
+			"value": 11,
+			"color": "",
+			"suit": "striped"
+		},{
+			"value": 12,
+			"color": "",
+			"suit": "striped"
+		},{
+			"value": 13,
+			"color": "",
+			"suit": "striped"
+		},{
+			"value": 14,
+			"color": "",
+			"suit": "striped"
+		},{
+			"value": 15,
+			"color": "",
+			"suit": "striped"
+		}
+	]
+}
