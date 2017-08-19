@@ -4,7 +4,12 @@
   "private": true,
   "devDependencies": {
     "react-native-scripts": "1.1.0",
-    "jest-expo": "~19.0.0",
+    "react-native-mock": "0.3.1",
+    "jest-expo": "~20.0.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "*",
+    "chai-immutable": "*",
+    "mocha": "*",
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -13,14 +18,16 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "mocha --require test/setup-tests.js --recursive src/**/__specs__/*.spec.js --watch",
+    "jest": "node node_modules/jest/bin/jest.js --watch"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "expo": "^19.0.0",
     "react": "16.0.0-alpha.12",
-    "react-native": "^0.46.1"
+		"react-native": "^0.46.1"
   }
 }

@@ -1,8 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import initial_state from './initialState.json'
+import {start} from './src/reducers'
+
 export default class App extends React.Component {
   render() {
+		start(initial_state)
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>

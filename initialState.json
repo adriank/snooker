@@ -1,52 +1,46 @@
 {
 	"game":{
-		"current_player": null,
-		"current_ball": null
+		"currentPlayer": null,
+		"currentBall": null
 	},
-	"players": [
-		{
+	"players": [{
 			"name": "Pawilon",
 			"score": 0,
 			"balls": [],
 			"fouls": 0,
 			"bg_color": "#E637BF",
 			"color": "#eeeeee"
-		},
-		{
+		},{
 			"name": "Cyprian",
 			"score": 0,
 			"balls": [],
 			"fouls": 0,
 			"bg_color": "#162521",
 			"color": "#cccccc"
-		},
-		{
+		},{
 			"name": "Ela",
 			"score": 0,
 			"balls": [],
 			"fouls": 0,
 			"bg_color": "#E7E247",
 			"color": "#111111"
-		},
-		{
+		},{
 			"name": "Adrian",
 			"score": 0,
 			"balls": [],
 			"fouls": 0,
 			"bg_color": "#5158BB",
 			"color": "#eeeeee"
-		},
-		{
+		},{
 			"name": "Adam",
 			"score": 0,
 			"balls": [],
 			"fouls": 0,
 			"bg_color": "#379392",
 			"color": "#eeeeee"
-		},
-		{
+		}
 	],
-	"remaining_balls": [{
+	"remainingBalls": [{
 			"value": 1,
 			"color": "",
 			"suit": "solid"
