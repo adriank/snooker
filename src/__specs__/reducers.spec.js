@@ -50,7 +50,7 @@ describe('game logic', () => {
 
 	describe('players', () => {
 
-		it('sets game.currentPlayer to players[0] and pushes players[0] to end of queue', () => {
+		it('sets first player in the game', () => {
 			let state = fromJS({
 				"game": {
 					"currentPlayer": null
@@ -68,9 +68,19 @@ describe('game logic', () => {
 
 			expect(newState.getIn(["game","currentPlayer"])).to.be.an("object")
 			expect(newState.get("players").first().get("name")).to.equal("B")
-			expect(newState.get("players").last().get("name")).to.equal("A")
-
 		})
+
+		it('sets next player in the game', () => {
+			const state = nextPlayer(initialState)
+
+			let newState = nextPlayer(state)
+
+			expect(newState.getIn(["game","currentPlayer"])).to.be.an("object")
+			expect(newState.getIn(["game","currentPlayer", "name"])).to.equal("Cyprian")
+			expect(newState.get("players").first().get("name")).to.equal("Ela")
+			expect(newState.get("players").last().get("name")).to.equal("Pawilon")
+		})
+
 	})
 
 

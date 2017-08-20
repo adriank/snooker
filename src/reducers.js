@@ -9,8 +9,10 @@ export const foulWithBall = (state, number) => {
 	const idx = balls.findIndex(x => x.get("value") === number)
 	const ball = balls.get(idx).update("value", x => -x)
 	const newBalls = balls.delete(idx)
-	const playerBalls = state.getIn(["game", "currentPlayer", "balls"]).push(ball)
-	return state.setIn(["game", "currentPlayer", "balls"], playerBalls).set("remainingBalls", newBalls)
+	const playerBalls = state.getIn(["game", "currentPlayer", "balls"])
+													 .push(ball)
+	return state.setIn(["game", "currentPlayer", "balls"], playerBalls)
+							.set("remainingBalls", newBalls)
 }
 
 export const foul = (state) => {
@@ -23,10 +25,15 @@ export const foul = (state) => {
 export const nextPlayer = (state) => {
 	const players = state.get("players")
 	const firstPlayer = players.first()
-	return state.setIn(
+	const currentPlayer = state.getIn(["game", "currentPlayer"])
+	let newState = state.setIn(
 		["game", "currentPlayer"],
 		firstPlayer
-	).set("players", players.shift().push(firstPlayer))
+	).set("players", players.shift())
+	if (currentPlayer){
+		newState = newState.set("players", newState.get("players").push(currentPlayer))
+	}
+	return newState
 }
 
 export const nextBall = (state) => {
