@@ -5,7 +5,9 @@ import {
 	foul,
 	nextPlayer,
 	nextBall,
+	scoreBall,
 	foulWithBall,
+	updateScore,
 	start
 } from '../reducers';
 
@@ -19,10 +21,17 @@ const log = x => console.log(JSON.stringify(x, false, 2))
 describe('game logic', () => {
 
 	describe('balls', () => {
+		it("scores a ball", () => {
+			const state = nextPlayer(nextBall(initialState))
+			const newState = scoreBall(state)
+
+			// log(newState.get("game"))
+
+		})
 
 		it('ball other than curentBall was cleared', () => {
-			const newState = nextPlayer(nextBall(initialState))
-			const stateWithBallFoul = foulWithBall(newState, 11)
+			const state = nextPlayer(nextBall(initialState))
+			const stateWithBallFoul = foulWithBall(state, 11)
 
 			expect(stateWithBallFoul.get("remainingBalls")
 															.findIndex( x => x.get("value") === 11))
@@ -49,6 +58,12 @@ describe('game logic', () => {
 	})
 
 	describe('players', () => {
+
+		it('counts score', () => {
+			let state = updateScore(scoreBall(scoreBall(start(initialState))))
+
+			expect(state.getIn(["game", "currentPlayer", "score"])).to.equal(3)
+		})
 
 		it('sets first player in the game', () => {
 			let state = fromJS({
@@ -107,6 +122,21 @@ describe('game logic', () => {
 
 		})
 
+	})
+
+})
+
+describe("games", () => {
+
+	it("runs game with all balls scored by one player", () => {
+		let state = start(initialState)
+		// start() takes first ball and we loop through ball no 2 to ball no 15
+		for (let i = 1; i <= 15; i++){
+			state = scoreBall(state)
+		}
+
+		expect(state.get("remainingBalls").size).to.equal(0)
+		expect(state.getIn(["game", "currentPlayer", "score"])).to.equal(120)
 	})
 
 })

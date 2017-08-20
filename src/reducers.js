@@ -4,6 +4,23 @@ import {fromJS, List, Map} from 'immutable';
 
 const initialState = fromJS(initial_state)
 
+export const updateScore = (state) => {
+	const currentPlayer = state.getIn(["game", "currentPlayer"])
+	let score = currentPlayer.get("balls")
+													 .reduce(
+														 (r, x) => r + x.get("value"),
+														 -currentPlayer.get("fouls")
+														)
+	return state.setIn(["game", "currentPlayer", "score"], score)
+}
+
+export const scoreBall = (state) => {
+	const currentBall = state.getIn(["game", "currentBall"])
+	const currentPlayer = state.getIn(["game", "currentPlayer"])
+													 .update("balls", balls => balls.push(currentBall))
+	return updateScore(nextBall(state).setIn(["game", "currentPlayer"], currentPlayer))
+}
+
 export const foulWithBall = (state, number) => {
 	const balls = state.get("remainingBalls")
 	const idx = balls.findIndex(x => x.get("value") === number)
