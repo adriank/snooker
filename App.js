@@ -5,6 +5,7 @@ import {
 	View,
 	Button
 } from 'react-native'
+
 import Balls from './src/components/Balls'
 
 //import initial_state from './initialState.json'
@@ -20,7 +21,7 @@ export default class App extends React.Component {
 					<Text style={{ color: 'white', fontSize:20}}>Score: 0</Text>
 				</View>
         <View style={{flexGrow:1, backgroundColor: 'skyblue'}} >
-					<View style={{height:300}}>
+					<View style={{height:350}}>
 						<Balls/>
 					</View>
 				</View>

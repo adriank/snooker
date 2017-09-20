@@ -1,30 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
 	StyleSheet,
 	Image,
 	Text,
 	View
-} from 'react-native';
+} from 'react-native'
+import initial_state from '../../initialState.json'
 
-const Ball = ball => (
-  <View style={styles.Ball}>
+const ballDefinition = initial_state.remainingBalls
+const findBall = no => ballDefinition.find( ball => ball.value === no)
+
+const Ball = ball => {
+	let definition = findBall(Number(ball.no))
+	console.log(typeof ball.no)
+  return (<View style={[styles.Ball, {backgroundColor: definition.color}]}>
 		<Text style={styles.BallNo}>{ball.no}</Text>
-  </View>
-)
+  </View>)
+}
 
 const styles = StyleSheet.create({
   Ball: {
-    // flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+		alignItems: 'center',
+		backgroundColor: '#ffffff',
 		justifyContent: 'center',
-		borderRadius: 50,
+		borderRadius: 60,
 		margin: 5,
-		height: 50,
-		width: 50
+		height: 60,
+		width: 60
 	},
 	BallNo:{
-		fontSize:30
+		textAlign: 'center',
+		color: "#ffffff",
+		// backgroundColor:"#333333",
+		fontSize:25,
+		// width:60,
+		// borderRadius: 90
 	}
 });
 

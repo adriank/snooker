@@ -38,9 +38,9 @@ const Balls = comments => (
 )
 
 const styles = StyleSheet.create({
-	Balls:{
+	Balls: {
 		flex: 1,
-		maxHeight:300
+		marginVertical:20
 	},
   BallsRow: {
 		flex: 1,
