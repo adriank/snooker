@@ -1,30 +1,53 @@
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pids
-*.pid
-*.seed
-*.pid.lock
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+#
 node_modules/
-# Optional npm cache directory
-.npm
+npm-debug.log
+yarn-error.log
 
-# Optional eslint cache
-.eslintcache
-# Optional REPL history
-.node_repl_history
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
 
-# Output of 'npm pack'
-*.tgz
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-.expo/
-npm-debug.*
-yarn.lock
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
