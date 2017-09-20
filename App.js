@@ -20,7 +20,9 @@ export default class App extends React.Component {
 					<Text style={{ color: 'white', fontSize:20}}>Score: 0</Text>
 				</View>
         <View style={{flexGrow:1, backgroundColor: 'skyblue'}} >
-					<Balls/>
+					<View style={{height:300}}>
+						<Balls/>
+					</View>
 				</View>
         <View style={{flexShrink:1, backgroundColor: 'steelblue'}} >
 					<Button title="Next player" onPress={ (a) => console.log("aaa") } />

@@ -6,9 +6,9 @@ import {
 	View
 } from 'react-native';
 
-const Ball = () => (
+const Ball = ball => (
   <View style={styles.Ball}>
-		<Text style={styles.BallNo}>{this.props.BallNo}</Text>
+		<Text style={styles.BallNo}>{ball.no}</Text>
   </View>
 )
 
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 50,
+		margin: 5,
 		height: 50,
 		width: 50
 	},
