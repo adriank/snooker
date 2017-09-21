@@ -16,12 +16,12 @@ export default class App extends React.Component {
 		// start(initial_state)
     return (
       <View style={{ flex: 1}}>
-        <View style={{ flexShrink:1, backgroundColor: 'powderblue' }}>
+        <View style={{ flexShrink:1, backgroundColor: 'powdergreen' }}>
 					<Text style={{ color: 'white', fontSize:30}}>Adrians turn2</Text>
 					<Text style={{ color: 'white', fontSize:20}}>Score: 0</Text>
 				</View>
-        <View style={{flexGrow:1, backgroundColor: 'skyblue'}} >
-					<View style={{height:350}}>
+        <View style={{flexGrow:1, backgroundColor: '#0a6c03'}} >
+					<View style={{height:310}}>
 						<Balls/>
 					</View>
 				</View>

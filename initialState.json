@@ -42,7 +42,7 @@
 	],
 	"remainingBalls": [{
 			"value": 1,
-			"color": "#fec63d",
+			"color": "gold",
 			"suit": "solid"
 		},{
 			"value": 2,
@@ -50,31 +50,31 @@
 			"suit": "solid"
 		},{
 			"value": 3,
-			"color": "#bb285c",
+			"color": "red",
 			"suit": "solid"
 		},{
 			"value": 4,
-			"color": "#5125ad",
+			"color": "purple",
 			"suit": "solid"
 		},{
 			"value": 5,
-			"color": "#ff6624",
+			"color": "#ff8800",
 			"suit": "solid"
 		},{
 			"value": 6,
-			"color": "#355723",
+			"color": "#219A00",
 			"suit": "solid"
 		},{
 			"value": 7,
-			"color": "#840705",
+			"color": "maroon",
 			"suit": "solid"
 		},{
 			"value": 8,
-			"color": "#000000",
+			"color": "black",
 			"suit": "solid"
 		},{
 			"value": 9,
-			"color": "#fec63d",
+			"color": "gold",
 			"suit": "striped"
 		},{
 			"value": 10,
@@ -82,23 +82,23 @@
 			"suit": "striped"
 		},{
 			"value": 11,
-			"color": "#bb285c",
+			"color": "red",
 			"suit": "striped"
 		},{
 			"value": 12,
-			"color": "#5125ad",
+			"color": "purple",
 			"suit": "striped"
 		},{
 			"value": 13,
-			"color": "#ff6624",
+			"color": "#ff8800",
 			"suit": "striped"
 		},{
 			"value": 14,
-			"color": "#355723",
+			"color": "#219A00",
 			"suit": "striped"
 		},{
 			"value": 15,
-			"color": "#840705",
+			"color": "maroon",
 			"suit": "striped"
 		}
 	]
