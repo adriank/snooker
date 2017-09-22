@@ -5,25 +5,28 @@ import {
 	Text,
 	View
 } from 'react-native'
-import initial_state from '../../initialState.json'
 
-const ballDefinition = initial_state.remainingBalls
-const findBall = no => ballDefinition.find( ball => ball.value === no)
-
-const Ball = ball => {
-
-	let definition = findBall(Number(ball.no))
-	let bkg = {backgroundColor: definition.color}
-	let striped = definition.suit === "striped"
+const Ball = props => {
+	const ball = props.def
+	const bkg = {backgroundColor: ball.color}
+	const striped = ball.suit === "striped"
 
 	return (
-		<View style={[styles.Ball, (striped ? {} : bkg)]}>
+		<View style={[
+			styles.Ball,
+			(striped ? {} : bkg),
+			(ball.cleared ? styles.BallCleared : {}),
+			(ball.current ? styles.current : {})
+		]}>
 			<View style={[
 				styles.BallNo,
 				(striped ? [styles.striped, bkg] : {})
 			]}>
 				<View style={(striped ? styles.BallNo : {})}>
-					<Text style={styles.BallNoText}>{ball.no}</Text>
+					<Text style={styles.BallNoText}
+								allowFontScaling={false}>
+						{ball.value}
+					</Text>
 				</View>
 			</View>
 		</View>
@@ -40,6 +43,9 @@ const styles = StyleSheet.create({
 		height: 60,
 		width: 60,
 		overflow: "hidden"
+	},
+	BallCleared:{
+		opacity:.5
 	},
 	BallNo:{
 		backgroundColor: "white",
@@ -64,7 +70,12 @@ const styles = StyleSheet.create({
 		borderRadius:0
 	},
 	current: {
-		borderWidth: 2
+		transform: [
+			{scaleX: 1.2}, {scaleY:1.2}
+		],
+		borderColor: "black",
+		borderWidth: 2,
+		zIndex:100
 	}
 })
 

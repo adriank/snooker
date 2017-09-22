@@ -43,7 +43,8 @@
 	"remainingBalls": [{
 			"value": 1,
 			"color": "gold",
-			"suit": "solid"
+			"suit": "solid",
+			"current":true
 		},{
 			"value": 2,
 			"color": "#0844a4",
@@ -87,7 +88,8 @@
 		},{
 			"value": 12,
 			"color": "purple",
-			"suit": "striped"
+			"suit": "striped",
+			"cleared": true
 		},{
 			"value": 13,
 			"color": "#ff8800",
