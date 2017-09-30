@@ -6,40 +6,54 @@ import {
 	View,
 } from 'react-native';
 import Ball from './Ball'
-import initial_state from '../../initialState.json'
 
-const ballDefinition = initial_state.remainingBalls
-const findBall = no => ballDefinition.find( ball => ball.value === no)
+const Balls = props => {
+	const findBall = no => props.balls.find( ball => ball.get("value") === no)
+	const foulWithBall = props.actions.foulWithBall
 
-const Balls = comments => (
-	<View style={styles.Balls}>
+	return (<View style={styles.Balls}>
 		<View style={styles.BallsRow}>
-			<Ball def={findBall(1)}/>
+			<Ball def={findBall(1)}
+						onPress={foulWithBall}/>
 		</View>
 		<View style={styles.BallsRow}>
-			<Ball def={findBall(2)}/>
-			<Ball def={findBall(9)}/>
+			<Ball def={findBall(2)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(9)}
+						onPress={foulWithBall}/>
 		</View>
 		<View style={styles.BallsRow}>
-			<Ball def={findBall(10)}/>
-			<Ball def={findBall(8)}/>
-			<Ball def={findBall(3)}/>
+			<Ball def={findBall(10)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(8)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(3)}
+						onPress={foulWithBall}/>
 		</View>
 		<View style={styles.BallsRow}>
-			<Ball def={findBall(4)}/>
-			<Ball def={findBall(14)}/>
-			<Ball def={findBall(7)}/>
-			<Ball def={findBall(11)}/>
+			<Ball def={findBall(4)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(14)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(7)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(11)}
+						onPress={foulWithBall}/>
 		</View>
 		<View style={styles.BallsRow}>
-			<Ball def={findBall(12)}/>
-			<Ball def={findBall(6)}/>
-			<Ball def={findBall(15)}/>
-			<Ball def={findBall(13)}/>
-			<Ball def={findBall(5)}/>
+			<Ball def={findBall(12)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(6)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(15)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(13)}
+						onPress={foulWithBall}/>
+			<Ball def={findBall(5)}
+						onPress={foulWithBall}/>
 		</View>
-	</View>
-)
+	</View>)
+}
 
 const styles = StyleSheet.create({
 	Balls: {

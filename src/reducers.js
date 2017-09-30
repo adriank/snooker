@@ -1,8 +1,4 @@
-import initial_state from "../initialState.json"
-
 import {fromJS, List, Map} from 'immutable';
-
-const initialState = fromJS(initial_state)
 
 export const updateScore = (state) => {
 	const currentPlayer = state.getIn(["game", "currentPlayer"])
@@ -22,12 +18,14 @@ export const scoreBall = (state) => {
 }
 
 export const foulWithBall = (state, number) => {
+	console.log(state)
 	const balls = state.get("remainingBalls")
 	const idx = balls.findIndex(x => x.get("value") === number)
 	const ball = balls.get(idx).update("value", x => -x)
 	const newBalls = balls.delete(idx)
 	const playerBalls = state.getIn(["game", "currentPlayer", "balls"])
 													 .push(ball)
+	console.log(playerBalls)
 	return state.setIn(["game", "currentPlayer", "balls"], playerBalls)
 							.set("remainingBalls", newBalls)
 }

@@ -2,7 +2,7 @@
 
 require('babel-register');
 require('babel-polyfill');
-require('react-native-mock/mock');
+// require('react-native-mock/mock');
 
 let chai = require('chai');
 let chaiAsPromised = require('chai-as-promised');

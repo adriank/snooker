@@ -1,23 +1,29 @@
 import React, { Component } from 'react'
+import {toJS} from "immutable"
 import {
 	StyleSheet,
 	Image,
 	Text,
-	View
+	View,
+	TouchableHighlight,
+	Platform
 } from 'react-native'
 
 const Ball = props => {
-	const ball = props.def
+	const ball = props.def.toJS()
 	const bkg = {backgroundColor: ball.color}
 	const striped = ball.suit === "striped"
 
 	return (
-		<View style={[
-			styles.Ball,
-			(striped ? {} : bkg),
-			(ball.cleared ? styles.BallCleared : {}),
-			(ball.current ? styles.current : {})
+		<TouchableHighlight onPress={() => props.onPress(ball.value)}
+												style={[
+													styles.Ball,
+													(striped ? {} : bkg),
+													(ball.cleared ? styles.BallCleared : {}),
+													(ball.current ? styles.current : {})
 		]}>
+		<View>
+			<View style={(Platform.OS === "android" && striped ? styles.androidFix:{})}/>
 			<View style={[
 				styles.BallNo,
 				(striped ? [styles.striped, bkg] : {})
@@ -29,19 +35,20 @@ const Ball = props => {
 					</Text>
 				</View>
 			</View>
-		</View>
+			</View>
+		</TouchableHighlight>
 	)
 }
-
+const ballSize = 60
 const styles = StyleSheet.create({
   Ball: {
 		alignItems: 'center',
 		backgroundColor: 'white',
 		justifyContent: 'center',
-		borderRadius: 60,
+		borderRadius: ballSize,
 		margin: 2,
-		height: 60,
-		width: 60,
+		height: ballSize,
+		width: ballSize,
 		overflow: "hidden"
 	},
 	BallCleared:{
@@ -51,8 +58,6 @@ const styles = StyleSheet.create({
 		backgroundColor: "white",
 		width: 25,
 		height: 25,
-		// marginLeft:7,
-		// marginBottom:7,
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 20
@@ -65,16 +70,28 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	striped:{
-		width:60,
+		width: ballSize,
 		paddingVertical: 17,
-		borderRadius:0
+		borderRadius: 0
 	},
 	current: {
 		transform: [
-			{scaleX: 1.2}, {scaleY:1.2}
+			{scaleX: 1.2}, {scaleY: 1.2}
 		],
 		borderColor: "black",
 		borderWidth: 2,
+		zIndex:100
+	},
+	androidFix:{
+		position: "absolute",
+		top:-18.5,
+		left:-5.5,
+		width: ballSize + 11,
+		height:ballSize + 11,
+		borderWidth: 5,
+		borderRadius:100,
+		borderColor:"#0a6c03",
+		backgroundColor:"transparent",
 		zIndex:100
 	}
 })
