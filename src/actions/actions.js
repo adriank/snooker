@@ -15,9 +15,7 @@ export function foul() {
 export function foulWithBall(id) {
   return {
 		type: types.FOUL_WITH_BALL,
-		payload: {
-      id
-    }
+    id
   };
 }
 

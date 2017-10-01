@@ -18,7 +18,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 		case 'FOUL':
 			return foul(state)
 		case 'FOUL_WITH_BALL':
-			return foulWithBall(state, action.ballNo)
+			return foulWithBall(state, action.id)
 		case 'NEXT_PLAYER':
 			return nextPlayer(state)
 		case 'NEXT_BALL':

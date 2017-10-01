@@ -18,16 +18,19 @@ export const scoreBall = (state) => {
 }
 
 export const foulWithBall = (state, number) => {
-	console.log(state)
 	const balls = state.get("remainingBalls")
 	const idx = balls.findIndex(x => x.get("value") === number)
+	console.log(idx)
+	if (idx === -1)
+		return state
 	const ball = balls.get(idx).update("value", x => -x)
 	const newBalls = balls.delete(idx)
 	const playerBalls = state.getIn(["game", "currentPlayer", "balls"])
 													 .push(ball)
-	console.log(playerBalls)
-	return state.setIn(["game", "currentPlayer", "balls"], playerBalls)
-							.set("remainingBalls", newBalls)
+	const a = updateScore(state.setIn(["game", "currentPlayer", "balls"], playerBalls)
+							.set("remainingBalls", newBalls))
+	console.log(a.get("game"))
+	return a
 }
 
 export const foul = (state) => {

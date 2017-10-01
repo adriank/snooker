@@ -6,10 +6,13 @@ import MainView from './src/components/main.view'
 export const store = makeStore();
 
 export default class App extends React.Component {
-	store = store
 	state = {
-    fontsLoaded: false,
-  }
+		fontsLoaded: false,
+	}
+	constructor (){
+		super()
+		this.store = store
+	}
 
 	// async componentDidMount() {
   //   await Font.loadAsync({
@@ -19,7 +22,6 @@ export default class App extends React.Component {
 	// }
 
 	render() {
-		console.log(this.store)
     return (
 			<Provider store={this.store}>
 				<MainView/>
