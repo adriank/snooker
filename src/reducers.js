@@ -5,7 +5,7 @@ export const updateScore = (state) => {
 	let score = currentPlayer.get("balls")
 													 .reduce(
 														 (r, x) => r + x.get("value"),
-														 -currentPlayer.get("fouls")
+														 -currentPlayer.get("fouls")*2
 														)
 	return state.setIn(["game", "currentPlayer", "score"], score)
 }
@@ -18,26 +18,25 @@ export const scoreBall = (state) => {
 }
 
 export const foulWithBall = (state, number) => {
-	const balls = state.get("remainingBalls")
-	const idx = balls.findIndex(x => x.get("value") === number)
-	console.log(idx)
+	const remainingBalls = state.get("remainingBalls")
+	const idx = remainingBalls.findIndex(x => x.get("value") === number)
 	if (idx === -1)
 		return state
-	const ball = balls.get(idx).update("value", x => -x)
-	const newBalls = balls.delete(idx)
+	const ball = remainingBalls.get(idx).update("value", x => -x)
+	const newBalls = remainingBalls.delete(idx)
 	const playerBalls = state.getIn(["game", "currentPlayer", "balls"])
 													 .push(ball)
-	const a = updateScore(state.setIn(["game", "currentPlayer", "balls"], playerBalls)
-							.set("remainingBalls", newBalls))
-	console.log(a.get("game"))
-	return a
+	const balls = state.get("balls").setIn([number - 1, "cleared"], true)
+	return updateScore(state.setIn(["game", "currentPlayer", "balls"], playerBalls)
+														 .set("remainingBalls", newBalls)
+														 .set("balls", balls))
 }
 
 export const foul = (state) => {
-	return state.updateIn(
+	return updateScore(state.updateIn(
 		["game", "currentPlayer", "fouls"],
 		x => x + 1
-	)
+	))
 }
 
 export const nextPlayer = (state) => {

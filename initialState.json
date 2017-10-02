@@ -119,8 +119,7 @@
 		},{
 			"value": 12,
 			"color": "purple",
-			"suit": "striped",
-			"cleared": true
+			"suit": "striped"
 		},{
 			"value": 13,
 			"color": "#ff8800",

@@ -31,7 +31,7 @@ const MainView = props => {
 																styles.foul,
 																{ paddingVertical: 10, borderRadius: 5 }
 															]}
-															onPress={(a) => console.log("foul")} >
+															onPress={actions.foul} >
 						<Text style={styles.buttonText}>FOUL (-2 pts)</Text>
 					</TouchableHighlight>
 					<TouchableHighlight style={[
@@ -43,7 +43,7 @@ const MainView = props => {
 																	borderRadius: 5
 																}
 															]}
-															onPress={(a) => actions.nextPlayer()} >
+															onPress={actions.nextPlayer} >
 						<Text style={styles.buttonText}>NEXT PLAYER</Text>
 					</TouchableHighlight>
 				</View>
