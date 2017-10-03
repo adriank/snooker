@@ -16,6 +16,7 @@ const Ball = props => {
 
 	return (
 		<TouchableHighlight onPress={() => props.onPressFn(ball.value)}
+												disabled={ball.cleared}
 												style={[
 													styles.Ball,
 													(striped ? {} : bkg),

@@ -20,7 +20,7 @@ const MainView = props => {
 	const { state, actions } = props
 	return (
 		<View style={{ flex: 1}}>
-			<View style={{ flex:1, backgroundColor: 'green', paddingVertical: 20 }}>
+			<View style={{ flex:1, backgroundColor: 'green', paddingTop: 20, paddingBottom:10 }}>
 				<Text style={{ color: 'white', fontSize:30, textAlign: "center"}}>
 					{state.present.getIn(["game", "currentPlayer", "name"])}'s turn
 					</Text>
