@@ -29,7 +29,10 @@ const MainView = props => {
 					</Text>
 			</View>
 			<View style={{flex: 8, backgroundColor: '#0a6c03'}} >
-				<View style={{}}>
+				<View>
+					<View style={{position: "absolute", right: 10, zIndex:100}}>
+						<Undo/>
+					</View>
 					<Balls balls={state.present.get("balls")}
 								 currentBall={state.present.getIn(["game", "currentBall", "value"])}
 								 actions={actions}/>
@@ -45,7 +48,7 @@ const MainView = props => {
 					</TouchableHighlight>
 					<TouchableHighlight style={[
 																styles.button,
-																styles.foul,
+																styles.nextPlayer,
 																{
 																	marginTop: 20,
 																	paddingVertical: 10,
@@ -55,13 +58,13 @@ const MainView = props => {
 															onPress={actions.nextPlayer} >
 						<Text style={styles.buttonText}>NEXT PLAYER</Text>
 					</TouchableHighlight>
-					<Undo/>
 				</View>
 			</View>
 			<View style={{flex:1, backgroundColor: 'cornsilk'}} >
 				<TouchableHighlight
 								style={[styles.button, styles.leadboard]}
-								onPress={ (a) => true } >
+								onPress={ (a) => true }
+								underlayColor={"white"}>
 					<View>
 						<Text style={styles.buttonText}>Leaderboard</Text>
 						<FontAwesome style={{textAlign: "center"}} name="chevron-down" size={30}></FontAwesome>
@@ -82,9 +85,14 @@ export default connect(state => ({
 
 const styles = StyleSheet.create({
 	foul:{
-		backgroundColor: "lightcoral",
+		backgroundColor: "#E15554",
 		width: 200,
 		marginHorizontal: 100,
+	},
+	nextPlayer:{
+		width: 200,
+		marginHorizontal: 100,
+		backgroundColor:"#4D9DE0"
 	},
 	buttonText:{
 		color: "black",

@@ -9,11 +9,8 @@ import {
 
 let Undo = ({ canUndo, onUndo }) => (
 	<TouchableHighlight onPress={onUndo} disabled={!canUndo}
-											style={[
-												styles.undoButton,
-												!canUndo && styles.disabledButton
-											]}>
-		<FontAwesome style={styles.icon} name="undo" size={30}></FontAwesome>
+											style={ !canUndo && styles.disabledButton}>
+		<FontAwesome style={styles.icon} name="undo" size={50}></FontAwesome>
 	</TouchableHighlight>
 )
 
@@ -33,11 +30,10 @@ Undo = connect(
 export default Undo
 
 const styles = StyleSheet.create({
-	undoButton: {
-		padding: 10,
-		// width: 50,
-	},
 	icon: {
+		padding: 10,
+		fontSize: 50,
+		height: 70,
 		textAlign: "center",
 		color: "#ffffaa",
 	},
