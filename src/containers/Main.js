@@ -16,7 +16,6 @@ import Undo from './Undo'
 
 const MainView = props => {
 	const { state, actions } = props
-	console.log(state.past.length, state.future.length)
 	return (
 		<View style={{ flex: 1}}>
 			<View style={{ flex:1, backgroundColor: 'green' }}>
@@ -25,9 +24,11 @@ const MainView = props => {
 			</View>
 			<View style={{flex: 8, backgroundColor: '#0a6c03'}} >
 				<View style={{height: 330}}>
-					<Balls balls={state.present.get("balls")} actions={actions}/>
+					<Balls balls={state.present.get("balls")}
+								 currentBall={state.present.getIn(["game", "currentBall", "value"])}
+								 actions={actions}/>
 				</View>
-				<View style={{marginTop: 50}}>
+				<View style={{marginTop: 50, justifyContent: "center"}}>
 					<TouchableHighlight style={[
 																styles.button,
 																styles.foul,

@@ -15,7 +15,7 @@ const Ball = props => {
 	const striped = ball.suit === "striped"
 
 	return (
-		<TouchableHighlight onPress={() => props.onPress(ball.value)}
+		<TouchableHighlight onPress={() => props.onPressFn(ball.value)}
 												style={[
 													styles.Ball,
 													(striped ? {} : bkg),

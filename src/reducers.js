@@ -13,8 +13,12 @@ export const updateScore = (state) => {
 export const scoreBall = (state) => {
 	const currentBall = state.getIn(["game", "currentBall"])
 	const currentPlayer = state.getIn(["game", "currentPlayer"])
-													 .update("balls", balls => balls.push(currentBall))
-	return updateScore(nextBall(state).setIn(["game", "currentPlayer"], currentPlayer))
+														 .update("balls", balls => balls.push(currentBall))
+	const balls = state.get("balls")
+										 .setIn([currentBall.get("value") - 1, "cleared"], true)
+										 .setIn([currentBall.get("value") - 1, "current"], false)
+	return updateScore(nextBall(state.setIn(["game", "currentPlayer"], currentPlayer)
+																		.set("balls", balls)))
 }
 
 export const foulWithBall = (state, number) => {
@@ -55,10 +59,13 @@ export const nextPlayer = (state) => {
 
 export const nextBall = (state) => {
 	const nextBall = state.get("remainingBalls").first()
+	if(!nextBall) return state
+	const nextBallValue = nextBall.get("value")
 	return state.setIn(
 		["game", "currentBall"],
 		nextBall
 	).set("remainingBalls", state.get("remainingBalls").shift())
+	.setIn(["balls", nextBallValue > 0 ? nextBallValue - 1 : 0, "current"], true)
 }
 
 export function start(state) {

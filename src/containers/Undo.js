@@ -1,16 +1,19 @@
 import React from 'react'
 import { ActionCreators as UndoActionCreators } from 'redux-undo'
 import { connect } from 'react-redux'
+import { FontAwesome } from '@expo/vector-icons';
 import {
 	StyleSheet,
-	Text,
 	TouchableHighlight
 } from 'react-native'
 
 let Undo = ({ canUndo, onUndo }) => (
 	<TouchableHighlight onPress={onUndo} disabled={!canUndo}
-											style={styles.undoButton}>
-		<Text style={styles.buttonText}>Undo</Text>
+											style={[
+												styles.undoButton,
+												!canUndo && styles.disabledButton
+											]}>
+		<FontAwesome style={styles.icon} name="undo" size={30}></FontAwesome>
 	</TouchableHighlight>
 )
 
@@ -31,14 +34,14 @@ export default Undo
 
 const styles = StyleSheet.create({
 	undoButton: {
-		backgroundColor: "lightcoral",
-		width: 200,
-		marginHorizontal: 100,
+		padding: 10,
+		// width: 50,
 	},
-	buttonText:{
-		// fontFamily:"FontAwesome",
-		color: "black",
-		fontSize: 16,
-		textAlign: "center"
+	icon: {
+		textAlign: "center",
+		color: "#ffffaa",
 	},
+	disabledButton:{
+		opacity: .5
+	}
 })
