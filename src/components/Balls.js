@@ -15,7 +15,6 @@ const Balls = props => {
 		return ballNo === props.currentBall
 		? scoreBall() : foulWithBall(ballNo)
 	}
-	console.log(props.balls)
 
 	return (<View style={styles.Balls}>
 		<View style={styles.BallsRow}>
@@ -63,7 +62,8 @@ const Balls = props => {
 
 const styles = StyleSheet.create({
 	Balls: {
-		flex: 1,
+		// flex: 1,
+		height: 290,
 		marginVertical: 20
 	},
   BallsRow: {

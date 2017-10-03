@@ -14,21 +14,27 @@ import * as actions from '../actions/actions';
 import Balls from '../components/Balls'
 import Undo from './Undo'
 
+Text.defaultProps.allowFontScaling=false
+
 const MainView = props => {
 	const { state, actions } = props
 	return (
 		<View style={{ flex: 1}}>
-			<View style={{ flex:1, backgroundColor: 'green' }}>
-				<Text style={{ color: 'white', fontSize:30, textAlign: "center"}}>{state.present.getIn(["game", "currentPlayer", "name"])}'s turn</Text>
-				<Text style={{ color: 'white', fontSize:20, textAlign: "center"}}>Score: {state.present.getIn(["game", "currentPlayer", "score"])}</Text>
+			<View style={{ flex:1, backgroundColor: 'green', paddingVertical: 20 }}>
+				<Text style={{ color: 'white', fontSize:30, textAlign: "center"}}>
+					{state.present.getIn(["game", "currentPlayer", "name"])}'s turn
+					</Text>
+				<Text style={{ color: 'white', fontSize:20, textAlign: "center"}}>
+					Score: {state.present.getIn(["game", "currentPlayer", "score"])}
+					</Text>
 			</View>
 			<View style={{flex: 8, backgroundColor: '#0a6c03'}} >
-				<View style={{height: 330}}>
+				<View style={{}}>
 					<Balls balls={state.present.get("balls")}
 								 currentBall={state.present.getIn(["game", "currentBall", "value"])}
 								 actions={actions}/>
 				</View>
-				<View style={{marginTop: 50, justifyContent: "center"}}>
+				<View style={{justifyContent: "center"}}>
 					<TouchableHighlight style={[
 																styles.button,
 																styles.foul,
@@ -78,13 +84,9 @@ const styles = StyleSheet.create({
 	foul:{
 		backgroundColor: "lightcoral",
 		width: 200,
-		// height: 50,
-		// marginTop: 100,
 		marginHorizontal: 100,
-		// flexShrink: 1
 	},
 	buttonText:{
-		// fontFamily:"FontAwesome",
 		color: "black",
 		fontSize: 16,
 		textAlign: "center"
