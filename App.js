@@ -1,14 +1,16 @@
-import React from 'react';
+import React from 'react'
 import { Provider } from 'react-redux'
-import makeStore from './src/store';
-import MainView from './src/components/main.view'
+import makeStore from './src/store'
+import MainView from './src/containers/Main'
 
 export const store = makeStore();
 
 export default class App extends React.Component {
+
 	state = {
 		fontsLoaded: false,
 	}
+
 	constructor (){
 		super()
 		this.store = store
@@ -26,6 +28,6 @@ export default class App extends React.Component {
 			<Provider store={this.store}>
 				<MainView/>
 			</Provider>
-    );
+    )
   }
 }

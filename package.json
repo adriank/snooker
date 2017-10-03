@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-native-scripts": "*",
-    "react-native-mock": "*",
-    "jest-expo": "~20.0.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
     "chai-as-promised": "*",
     "chai-immutable": "*",
+    "jest-expo": "~20.0.0",
     "mocha": "*",
+    "react-native-mock": "*",
+    "react-native-scripts": "*",
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -32,6 +33,7 @@
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.46.1",
     "react-native-fontawesome": "^5.7.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "redux-undo": "^0.6.1"
   }
 }

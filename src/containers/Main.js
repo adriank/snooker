@@ -11,19 +11,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 
-import Balls from './Balls'
+import Balls from '../components/Balls'
+import Undo from './Undo'
 
 const MainView = props => {
 	const { state, actions } = props
+	console.log(state.past.length, state.future.length)
 	return (
 		<View style={{ flex: 1}}>
 			<View style={{ flex:1, backgroundColor: 'green' }}>
-				<Text style={{ color: 'white', fontSize:30, textAlign: "center"}}>{state.getIn(["game", "currentPlayer", "name"])}'s turn</Text>
-				<Text style={{ color: 'white', fontSize:20, textAlign: "center"}}>Score: {state.getIn(["game", "currentPlayer", "score"])}</Text>
+				<Text style={{ color: 'white', fontSize:30, textAlign: "center"}}>{state.present.getIn(["game", "currentPlayer", "name"])}'s turn</Text>
+				<Text style={{ color: 'white', fontSize:20, textAlign: "center"}}>Score: {state.present.getIn(["game", "currentPlayer", "score"])}</Text>
 			</View>
-			<View style={{flex:8, backgroundColor: '#0a6c03'}} >
+			<View style={{flex: 8, backgroundColor: '#0a6c03'}} >
 				<View style={{height: 330}}>
-					<Balls balls={state.get("balls")} actions={actions}/>
+					<Balls balls={state.present.get("balls")} actions={actions}/>
 				</View>
 				<View style={{marginTop: 50}}>
 					<TouchableHighlight style={[
@@ -46,12 +48,13 @@ const MainView = props => {
 															onPress={actions.nextPlayer} >
 						<Text style={styles.buttonText}>NEXT PLAYER</Text>
 					</TouchableHighlight>
+					<Undo/>
 				</View>
 			</View>
 			<View style={{flex:1, backgroundColor: 'cornsilk'}} >
 				<TouchableHighlight
 								style={[styles.button, styles.leadboard]}
-								onPress={ (a) => console.log("aaa") } >
+								onPress={ (a) => true } >
 					<View>
 						<Text style={styles.buttonText}>Leaderboard</Text>
 						<FontAwesome style={{textAlign: "center"}} name="chevron-down" size={30}></FontAwesome>

@@ -1,5 +1,6 @@
 import initial_state from "../initialState.json"
 import {fromJS} from 'immutable';
+import undoable from 'redux-undo'
 import {
 	foul,
 	nextPlayer,
@@ -11,7 +12,7 @@ import {
 
 const INITIAL_STATE = start(fromJS(initial_state))
 
-export default function reducer(state = INITIAL_STATE, action = {}) {
+const reducer = function(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
 		case 'START':
 			return start(state)
@@ -28,3 +29,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 	}
   return state
 }
+
+const undoableTodos = undoable(reducer)
+
+export default undoableTodos
