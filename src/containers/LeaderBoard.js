@@ -9,10 +9,24 @@ import {
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 
-export default class LeaderBoard extends React.Component {
+const Head = props => {
+	return (
+		<View style={props.style}>
+			{props.children}
+		</View>
+	)
+}
+const Content = props => {
+	return (
+		<View style={props.style}>
+			{props.children}
+		</View>
+	)
+}
 
+class AnimatedPane extends React.Component {
 	state = {
-		leaderBoardOpened: false,
+		paneOpened: false,
 		slideAnim: new Animated.Value(70)
 	}
 
@@ -21,7 +35,7 @@ export default class LeaderBoard extends React.Component {
 	}
 
 	toggleLeaderBoard() {
-		const toValue = this.state.leaderBoardOpened ? 70 : 700
+		const toValue = this.state.paneOpened ? 70 : 700
 		Animated.timing(
       this.state.slideAnim,
       {
@@ -29,28 +43,45 @@ export default class LeaderBoard extends React.Component {
         duration: 1000,
       }
 		).start()
-		this.setState({leaderBoardOpened: !this.state.leaderBoardOpened})
+		this.setState({paneOpened: !this.state.paneOpened})
 	}
 
 	render() {
-    return (
-			<Animated.View style={[
-				this.state.leaderBoardStyle,
-				{height: this.state.slideAnim}
-			]} >
-				<TouchableHighlight
-								style={[styles.button]}
-								onPress={ (a) => this.toggleLeaderBoard() }
-								underlayColor={"white"}>
+		const c = this.props.children
+		if (c[0].type !== Head || c[1].type !== Content)
+			throw Error("Pane should have exactly two children, <Head/> and <Children/>.")
+		return (
+			<Animated.View style={{
+				...this.props.style,
+				height: this.state.slideAnim
+			}} >
+				<TouchableHighlight style={[styles.button]}
+													onPress={(a) => this.toggleLeaderBoard()}
+													underlayColor={"white"}>
 					<View>
-						<Text style={styles.buttonText}>Leaderboard</Text>
-						<FontAwesome style={{textAlign: "center"}} name="chevron-down" size={30}></FontAwesome>
+					{this.props.children[0]}
 					</View>
 				</TouchableHighlight>
-				<Text>aaa</Text>
+				<View style={{height:700, backgroundColor:"white"}}>
+	        {this.props.children[1]}
+				</View>
 			</Animated.View>
     )
   }
+}
+
+export default Header = props => {
+	return (
+		<AnimatedPane>
+			<Head>
+				<Text style={styles.buttonText}>Leaderboard</Text>
+				<FontAwesome style={{ textAlign: "center" }} name="chevron-down" size={30}></FontAwesome>
+			</Head>
+			<Content>
+				<Text>aaa</Text>
+			</Content>
+		</AnimatedPane>
+	)
 }
 const styles = StyleSheet.create({
 	leaderBoard: {
@@ -67,7 +98,8 @@ const styles = StyleSheet.create({
 		left:0,
 		right:0,
 		height:700,
-		backgroundColor: "white"
+		backgroundColor: "white",
+		zIndex:100
 	},
 	buttonText:{
 		color: "black",

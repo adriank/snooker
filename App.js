@@ -8,7 +8,7 @@ export const store = makeStore();
 export default class App extends React.Component {
 
 	state = {
-		fontsLoaded: false,
+		// fontsLoaded: false,
 	}
 
 	constructor (){
