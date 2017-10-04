@@ -2,6 +2,7 @@ import React from 'react'
 
 import {
 	StyleSheet,
+	Animated,
 	Text,
 	View,
 	TouchableHighlight
@@ -11,7 +12,8 @@ import { FontAwesome } from '@expo/vector-icons';
 export default class LeaderBoard extends React.Component {
 
 	state = {
-		leaderBoardStyle: styles.leaderBoard
+		leaderBoardOpened: false,
+		slideAnim: new Animated.Value(70)
 	}
 
 	constructor (){
@@ -19,15 +21,23 @@ export default class LeaderBoard extends React.Component {
 	}
 
 	toggleLeaderBoard() {
-		const style = this.state.leaderBoardStyle === styles.leaderBoardExpanded
-		? styles.leaderBoard
-		: styles.leaderBoardExpanded
-		this.setState({"leaderBoardStyle": style})
+		const toValue = this.state.leaderBoardOpened ? 70 : 700
+		Animated.timing(
+      this.state.slideAnim,
+      {
+        toValue,
+        duration: 1000,
+      }
+		).start()
+		this.setState({leaderBoardOpened: !this.state.leaderBoardOpened})
 	}
 
 	render() {
     return (
-			<View style={this.state.leaderBoardStyle} >
+			<Animated.View style={[
+				this.state.leaderBoardStyle,
+				{height: this.state.slideAnim}
+			]} >
 				<TouchableHighlight
 								style={[styles.button]}
 								onPress={ (a) => this.toggleLeaderBoard() }
@@ -38,7 +48,7 @@ export default class LeaderBoard extends React.Component {
 					</View>
 				</TouchableHighlight>
 				<Text>aaa</Text>
-			</View>
+			</Animated.View>
     )
   }
 }
@@ -48,7 +58,8 @@ const styles = StyleSheet.create({
 		bottom:0,
 		left:0,
 		right:0,
-		height:70
+		height:70,
+		backgroundColor: "white"
 	},
 	leaderBoardExpanded: {
 		position:"absolute",
