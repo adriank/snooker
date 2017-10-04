@@ -62,7 +62,6 @@ const Balls = props => {
 
 const styles = StyleSheet.create({
 	Balls: {
-		// flex: 1,
 		height: 290,
 		marginVertical: 20
 	},
