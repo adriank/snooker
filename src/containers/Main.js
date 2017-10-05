@@ -55,7 +55,6 @@ const MainView = props => {
 					</TouchableHighlight>
 				</View>
 			</View>
-			{/* <View style={{flex:1}}/> */}
 			<LeaderBoard {...props} />
 		</View>
 	)

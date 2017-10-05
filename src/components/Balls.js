@@ -13,7 +13,8 @@ const Balls = props => {
 	const scoreBall = props.actions.scoreBall
 	const ballPressFN = (ballNo) => {
 		return ballNo === props.currentBall
-		? scoreBall() : foulWithBall(ballNo)
+		? scoreBall()
+		: foulWithBall(ballNo)
 	}
 
 	return (<View style={styles.Balls}>

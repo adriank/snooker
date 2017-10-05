@@ -8,7 +8,10 @@ import {
 	TouchableHighlight
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
+import { H1, H2, H3 } from '../components/Typography'
+import PlayerBalls from '../components/PlayerBalls'
 
+// Helper components for AnimatedPane
 const Head = props => {
 	return (
 		<View style={props.style}>
@@ -16,10 +19,11 @@ const Head = props => {
 		</View>
 	)
 }
+
 const Content = props => {
 	return (
-		<View style={props.style}>
-			{props.children}
+		<View style={ props.style }>
+			{ props.children }
 		</View>
 	)
 }
@@ -56,10 +60,10 @@ class AnimatedPane extends React.Component {
 				height: this.state.slideAnim
 			}} >
 				<TouchableHighlight style={[styles.button]}
-													onPress={(a) => this.toggleLeaderBoard()}
-													underlayColor={"white"}>
+														onPress={() => this.toggleLeaderBoard()}
+														underlayColor={"white"}>
 					<View>
-					{this.props.children[0]}
+						{this.props.children[0]}
 					</View>
 				</TouchableHighlight>
 				<View style={{height:700, backgroundColor:"white"}}>
@@ -70,7 +74,8 @@ class AnimatedPane extends React.Component {
   }
 }
 
-export default Header = props => {
+export default leaderBoard = props => {
+	const state = props.state.present
 	return (
 		<AnimatedPane>
 			<Head>
@@ -78,36 +83,44 @@ export default Header = props => {
 				<FontAwesome style={{ textAlign: "center" }} name="chevron-down" size={30}></FontAwesome>
 			</Head>
 			<Content>
-				<Text>aaa</Text>
+				<H2>Current Player ({state.getIn(["game", "currentPlayer", "name"])})</H2>
+				<PlayerBalls balls={state.get("balls")} playerBalls={state.getIn(["game", "currentPlayer", "balls"])}/>
+				{state.get("players").map(player =>
+				<View>
+					<H3>{player.get("name")} score: {player.get("score")}</H3>
+					<PlayerBalls balls={state.get("balls")} playerBalls={player.get("balls")}/>
+				</View>
+				)}
 			</Content>
 		</AnimatedPane>
 	)
 }
+
 const styles = StyleSheet.create({
 	leaderBoard: {
-		position:"absolute",
-		bottom:0,
-		left:0,
-		right:0,
-		height:70,
+		position: "absolute",
+		bottom: 0,
+		left: 0,
+		right: 0,
+		height: 70,
 		backgroundColor: "white"
 	},
 	leaderBoardExpanded: {
-		position:"absolute",
-		bottom:0,
-		left:0,
-		right:0,
-		height:700,
+		position: "absolute",
+		bottom: 0,
+		left: 0,
+		right: 0,
+		height: 700,
 		backgroundColor: "white",
-		zIndex:100
+		zIndex: 100
 	},
-	buttonText:{
+	buttonText: {
 		color: "black",
 		fontSize: 16,
 		textAlign: "center"
 	},
-	button:{
-		backgroundColor:"cornsilk",
+	button: {
+		backgroundColor: "cornsilk",
 		padding: 10
 	},
 })
