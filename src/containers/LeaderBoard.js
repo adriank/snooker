@@ -36,6 +36,7 @@ class AnimatedPane extends React.Component {
 
 	constructor (){
 		super()
+		// this.toggleLeaderBoard()
 	}
 
 	toggleLeaderBoard() {
@@ -76,6 +77,7 @@ class AnimatedPane extends React.Component {
 
 export default leaderBoard = props => {
 	const state = props.state.present
+	const playerFouls = state.getIn(["game", "currentPlayer", "fouls"])
 	return (
 		<AnimatedPane>
 			<Head>
@@ -83,14 +85,19 @@ export default leaderBoard = props => {
 				<FontAwesome style={{ textAlign: "center" }} name="chevron-down" size={30}></FontAwesome>
 			</Head>
 			<Content>
-				<H2>Current Player ({state.getIn(["game", "currentPlayer", "name"])})</H2>
+				<H3>Current Player ({state.getIn(["game", "currentPlayer", "name"])})</H3>
+				<Text>Fouls: {playerFouls} (-{playerFouls * 2} points)</Text>
 				<PlayerBalls balls={state.get("balls")} playerBalls={state.getIn(["game", "currentPlayer", "balls"])}/>
-				{state.get("players").map(player =>
-				<View>
-					<H3>{player.get("name")} score: {player.get("score")}</H3>
-					<PlayerBalls balls={state.get("balls")} playerBalls={player.get("balls")}/>
-				</View>
-				)}
+				{state.get("players").map(player => {
+					const fouls = player.get("fouls")
+					return (
+						<View key={player.name}>
+							<H3>{player.get("name")} score: {player.get("score")}</H3>
+							<Text>Fouls: {fouls} (-{fouls * 2 } points)</Text>
+							<PlayerBalls balls={state.get("balls")} playerBalls={player.get("balls")}/>
+						</View>
+					)
+				})}
 			</Content>
 		</AnimatedPane>
 	)

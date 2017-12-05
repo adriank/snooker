@@ -6,16 +6,26 @@ import {
 	View,
 } from 'react-native';
 
-const PlayerBalls = props => {
-	const balls = props.balls
+const PlayerBall = props => {
+	var ball = props.ball
 	return (
 		<View>
-		{props.playerBalls.map(ball => {
-			const ballNo = ball.get("value")
-			const ballDef = balls[ballNo -1]
-			return <Text>{ballNo}</Text>
-		})}
-		{props.playerBalls.size === 0 ? <Text>Empty</Text> : null}
+			<Text>{ball.value}</Text>
+		</View>
+	)
+}
+
+const PlayerBalls = props => {
+	const balls = props.balls.toJS()
+	return (
+		<View>
+			{props.playerBalls.map(ball => {
+				const ballNo = ball.get("value")
+				const ballDef = balls[Math.abs(ballNo) - 1]
+				ballDef.value = ballNo
+				return <PlayerBall ball={ ballDef }/>
+			})}
+			{props.playerBalls.size === 0 ? <Text>Empty</Text> : null}
 		</View>
 	)
 }

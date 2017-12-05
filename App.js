@@ -8,7 +8,7 @@ export const store = makeStore();
 export default class App extends React.Component {
 
 	state = {
-		// fontsLoaded: false,
+		fontsLoaded: false,
 	}
 
 	constructor (){
@@ -16,12 +16,12 @@ export default class App extends React.Component {
 		this.store = store
 	}
 
-	// async componentDidMount() {
-  //   await Font.loadAsync({
-  //     'FontAwesome': require('./assets/fonts/fontawesome-webfont.ttf'),
-	// 	});
-	// 	this.props.fontsLoaded = true
-	// }
+	async componentDidMount() {
+    await Font.loadAsync({
+      'FontAwesome': require('./assets/fonts/fontawesome-webfont.ttf'),
+		});
+		this.props.fontsLoaded = true
+	}
 
 	render() {
     return (
