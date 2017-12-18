@@ -1,5 +1,7 @@
 # Multi-player Snooker app
 
+<img src="https://github.com/adriank/snooker/blob/master/screenshoot.png" width="400">
+
 ## The story behind this app
 
 Recently my family started to play billiard a lot. They bought a 8-ball table to gain some skills with cues and balls, but the problem was that billard is a game for two, while there are 4 of us to play. To not have fights over who would play first and who needs to wait, we had to figure out a way to play with 4 to 5 players at once!
