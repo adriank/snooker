@@ -4,9 +4,9 @@
 
 ## The story behind this app
 
-Recently my family started to play billiard a lot. They bought a 8-ball table to gain some skills with cues and balls, but the problem was that billard is a game for two, while there are 4 of us to play. To not have fights over who would play first and who needs to wait, we had to figure out a way to play with 4 to 5 players at once!
+Recently my family started to play billiard a lot. They bought an 8-ball table to gain some skills with cues and balls, but the problem was that billard is a game for two, while there are 4 of us to play. To avoid fights over who plays first and who needs to wait, we had to figure out a way to play with 4 to 5 players at once!
 
-After some time, we ended up with pretty nice rules that brings some skill into the table and is fun at the same time.
+After some time, we ended up with pretty nice rules that brings some skill to the table and is fun at the same time.
 
 **The average game with 3 players lasts for around 30 minutes.**
 
