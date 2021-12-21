@@ -8,9 +8,9 @@
     "chai-as-promised": "*",
     "chai-immutable": "*",
     "jest-expo": "~20.0.0",
-    "mocha": "*",
+    "mocha": "^5.2.0",
     "react-native-mock": "*",
-    "react-native-scripts": "*",
+    "react-native-scripts": "^1.14.1",
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -29,9 +29,9 @@
     "@shoutem/ui": "^0.21.3",
     "expo": "^19.0.0",
     "immutable": "^3.8.1",
-    "npm": "^4.6.1",
+    "npm": "^6.1.0",
     "react": "^16.0.0-alpha.12",
-    "react-native": "^0.46.1",
+    "react-native": "^0.55.4",
     "react-native-fontawesome": "^5.7.0",
     "redux-thunk": "^2.2.0",
     "redux-undo": "^0.6.1"

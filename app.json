@@ -1,15 +1,15 @@
 {
-	"expo": {
-	 "name": "Snooker",
-	 "icon": "",
-	 "version": "1.0.0",
-	 "slug": "Billiard for 4 persons!",
-	 "sdkVersion": "17.0.0",
-	 "ios": {
-		 "bundleIdentifier": "io.devyard.snooker"
-	 },
-	 "android": {
-		 "package": "io.devyars.snooker"
-	 }
-	}
+  "expo": {
+    "name": "Snooker",
+    "icon": "",
+    "version": "1.0.0",
+    "slug": "Billiard for 4 persons!",
+    "sdkVersion": "19.0.0",
+    "ios": {
+      "bundleIdentifier": "io.devyard.snooker"
+    },
+    "android": {
+      "package": "io.devyars.snooker"
+    }
+  }
 }

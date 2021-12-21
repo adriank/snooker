@@ -11,6 +11,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { H1, H2, H3 } from '../components/Typography'
 import PlayerBalls from '../components/PlayerBalls'
 
+const TOGGLE_ANIMATION_DURATION = 1000
+
 // Helper components for AnimatedPane
 const Head = props => {
 	return (
@@ -45,7 +47,7 @@ class AnimatedPane extends React.Component {
       this.state.slideAnim,
       {
         toValue,
-        duration: 1000,
+        duration: TOGGLE_ANIMATION_DURATION,
       }
 		).start()
 		this.setState({paneOpened: !this.state.paneOpened})
